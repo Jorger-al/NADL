@@ -22,7 +22,7 @@ export default function SiteDetails() {
   useEffect(() => {
     async function fetchSite() {
       try {
-        const response = await fetch(`/directus-api/items/sites/${id}`);
+        const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/sites/${id}`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch site");
@@ -84,7 +84,7 @@ export default function SiteDetails() {
         }
       });
 
-      const response = await fetch(`/directus-api/items/sites/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/sites/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -116,7 +116,7 @@ export default function SiteDetails() {
     setConfirmAction(null);
     setLoading(true);
     try {
-      const response = await fetch(`/directus-api/items/sites/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/sites/${id}`, {
         method: "DELETE",
       });
 
