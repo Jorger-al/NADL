@@ -37,7 +37,7 @@ export default function ExploreCollection() {
   useEffect(() => {
     async function fetchSites() {
       try {
-        const response = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/items/sites?limit=-1");
+        const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/sites?limit=-1`);
         const result = await response.json();
 
         const filtered = (result.data || []).filter((site) => {
