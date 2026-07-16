@@ -42,7 +42,7 @@ export default function SubmittedPosts() {
 
                 // Fetch all blog_posts and filter client-side
                 const postsRes = await fetch(
-                    "/directus-api/items/blog_posts?limit=-1&sort=date_created"
+                    "${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts?limit=-1&sort=date_created"
                 );
 
                 let allPosts = [];
@@ -69,7 +69,7 @@ export default function SubmittedPosts() {
                     uniqueAuthors.map(async (authorName) => {
                         try {
                             const res = await fetch(
-                                `/directus-api/items/users?filter[name][_eq]=${encodeURIComponent(authorName)}&fields=name,role&limit=1`
+                                `${import.meta.env.VITE_DIRECTUS_URL}/items/users?filter[name][_eq]=${encodeURIComponent(authorName)}&fields=name,role&limit=1`
                             );
                             if (res.ok) {
                                 const data = await res.json();
