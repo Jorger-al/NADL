@@ -52,7 +52,7 @@ export default function NewPost() {
 
         const fetchPost = async () => {
             try {
-                const response = await fetch(`/directus-api/items/blog_posts/${editId}`);
+                const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts/${editId}`);
                 if (!response.ok) throw new Error("Failed to load post.");
                 const result = await response.json();
                 const post = result.data;
@@ -106,7 +106,7 @@ export default function NewPost() {
                 const formData = new FormData();
                 formData.append("file", imageFile);
 
-                const uploadRes = await fetch("/directus-api/files", {
+                const uploadRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/files", {
                     method: "POST",
                     body: formData,
                 });
