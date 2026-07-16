@@ -75,7 +75,7 @@ export default function SubmitFind() {
         const formData = new FormData();
         formData.append("file", imageFile);
 
-        const uploadRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/files", {
+        const uploadRes = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/files`, {
           method: "POST",
           body: formData,
         });
@@ -111,7 +111,7 @@ export default function SubmitFind() {
       }
 
       // 3. Post to reported_finds
-      const submitRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds", {
+      const submitRes = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
