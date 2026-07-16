@@ -42,7 +42,7 @@ export default function SubmittedFinds() {
 
                 // Fetch all reported_finds and filter client-side (avoids server-side filter permission issues)
                 const findsRes = await fetch(
-                    "/directus-api/items/reported_finds?limit=-1&sort=created_at"
+                    "${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds?limit=-1&sort=created_at"
                 );
 
                 let allFinds = [];
@@ -69,7 +69,7 @@ export default function SubmittedFinds() {
                     uniqueEmails.map(async (email) => {
                         try {
                             const res = await fetch(
-                                `/directus-api/items/users?filter[email][_eq]=${encodeURIComponent(email)}&fields=email,role&limit=1`
+                                `${import.meta.env.VITE_DIRECTUS_URL}/items/users?filter[email][_eq]=${encodeURIComponent(email)}&fields=email,role&limit=1`
                             );
                             if (res.ok) {
                                 const data = await res.json();
