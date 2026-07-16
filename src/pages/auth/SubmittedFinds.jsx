@@ -42,7 +42,7 @@ export default function SubmittedFinds() {
 
                 // Fetch all reported_finds and filter client-side (avoids server-side filter permission issues)
                 const findsRes = await fetch(
-                    "${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds?limit=-1&sort=created_at"
+                    `${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds?limit=-1&sort=created_at`
                 );
 
                 let allFinds = [];
