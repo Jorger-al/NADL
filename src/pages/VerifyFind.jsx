@@ -53,7 +53,7 @@ export default function VerifyFind() {
             setLoading(true);
             setError("");
             try {
-                const response = await fetch(`/directus-api/items/reported_finds/${id}`);
+                const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds/${id}`);
                 if (!response.ok) {
                     throw new Error("Failed to load discovery details.");
                 }
@@ -125,7 +125,7 @@ export default function VerifyFind() {
                 site_image: findData.image || null,
             };
 
-            const postRes = await fetch("/directus-api/items/sites", {
+            const postRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/items/sites", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -141,7 +141,7 @@ export default function VerifyFind() {
             const newSiteId = postResult.data.id;
 
             // 2. Update status to verified
-            const patchRes = await fetch(`/directus-api/items/reported_finds/${id}`, {
+            const patchRes = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -172,7 +172,7 @@ export default function VerifyFind() {
 
             if (!isAuthorNull) {
                 // Change status to denied
-                const patchRes = await fetch(`/directus-api/items/reported_finds/${id}`, {
+                const patchRes = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds/${id}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -182,7 +182,7 @@ export default function VerifyFind() {
                 if (!patchRes.ok) throw new Error("Failed to change discovery status to denied.");
             } else {
                 // Delete reported find
-                const deleteRes = await fetch(`/directus-api/items/reported_finds/${id}`, {
+                const deleteRes = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds/${id}`, {
                     method: "DELETE",
                 });
                 if (!deleteRes.ok) throw new Error("Failed to delete the discovery report.");
