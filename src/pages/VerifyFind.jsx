@@ -125,7 +125,7 @@ export default function VerifyFind() {
                 site_image: findData.image || null,
             };
 
-            const postRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/items/sites", {
+            const postRes = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/sites`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
