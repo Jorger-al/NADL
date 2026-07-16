@@ -26,7 +26,7 @@ export default function Profile() {
                 }
 
                 const response = await fetch(
-                    `/directus-api/items/users/${token}?fields=id,avatar,name,email,location,title,institution,description,role`
+                    `${import.meta.env.VITE_DIRECTUS_URL}/items/users/${token}?fields=id,avatar,name,email,location,title,institution,description,role`
                 );
 
                 const result = await response.json();
@@ -77,7 +77,7 @@ export default function Profile() {
                 const formData = new FormData();
                 formData.append("file", editAvatarFile);
 
-                const uploadRes = await fetch("/directus-api/files", {
+                const uploadRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/files", {
                     method: "POST",
                     body: formData,
                 });
@@ -91,7 +91,7 @@ export default function Profile() {
             }
 
             const response = await fetch(
-                `/directus-api/items/users/${token}`,
+                `${import.meta.env.VITE_DIRECTUS_URL}/items/users/${token}`,
                 {
                     method: "PATCH",
                     headers: {
