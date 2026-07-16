@@ -44,7 +44,7 @@ export default function Post() {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const response = await fetch(`/directus-api/items/blog_posts/${id}`);
+        const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts/${id}`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch post");
@@ -56,7 +56,7 @@ export default function Post() {
         if (result.data && result.data.author) {
           try {
             const authorRes = await fetch(
-              `/directus-api/items/users?filter[name][_eq]=${encodeURIComponent(
+              `${import.meta.env.VITE_DIRECTUS_URL}/items/users?filter[name][_eq]=${encodeURIComponent(
                 result.data.author
               )}`
             );
@@ -93,7 +93,7 @@ export default function Post() {
 
         // Fetch related posts
         const relatedResponse = await fetch(
-          `/directus-api/items/blog_posts?limit=3&sort[]=-date_published`
+          `${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts?limit=3&sort[]=-date_published`
         );
 
         if (relatedResponse.ok) {
@@ -141,7 +141,7 @@ export default function Post() {
         const formData = new FormData();
         formData.append("file", editImageFile);
 
-        const uploadRes = await fetch("/directus-api/files", {
+        const uploadRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/files", {
           method: "POST",
           body: formData,
         });
@@ -170,7 +170,7 @@ export default function Post() {
         payload.cover_image = fileId;
       }
 
-      const response = await fetch(`/directus-api/items/blog_posts/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -199,7 +199,7 @@ export default function Post() {
     setConfirmAction(null);
     setLoading(true);
     try {
-      const response = await fetch(`/directus-api/items/blog_posts/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -227,7 +227,7 @@ export default function Post() {
 
     try {
       const response = await fetch(
-        `/directus-api/items/blog_posts/${id}`,
+        `${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -264,7 +264,7 @@ export default function Post() {
     setConfirmAction(null);
     setLoading(true);
     try {
-      const response = await fetch(`/directus-api/items/blog_posts/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts/${id}`, {
         method: "DELETE",
       });
 
