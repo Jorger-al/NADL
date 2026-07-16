@@ -23,7 +23,7 @@ export default function Blog() {
     async function fetchPosts() {
       try {
         const response = await fetch(
-          "/directus-api/items/blog_posts?limit=-1&sort[]=-date_published"
+          "${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts?limit=-1&sort[]=-date_published"
         );
 
         const result = await response.json();
