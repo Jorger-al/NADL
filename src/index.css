@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 
+      Maritime Scholarly Palette 
+      Parsed HEX to HSL values
+    */
+    --background: 48 33% 96%; /* #fcf9f0 - Parchment */
+    --foreground: 60 10% 10%; /* #1c1c17 - On Surface */
+
+    --card: 48 33% 96%; /* #fcf9f0 */
+    --card-foreground: 60 10% 10%; /* #1c1c17 */
+
+    --popover: 48 33% 96%; /* #fcf9f0 */
+    --popover-foreground: 60 10% 10%; /* #1c1c17 */
+
+    /* #001629 is approx 208deg, 100%, 8% */
+    --primary: 208 100% 8%; 
+    --primary-foreground: 0 0% 100%; /* #ffffff */
+    --primary-container: 205 100% 14%; /* #002b49 */
+
+    /* #48626e is approx 200deg, 21%, 36% */
+    --secondary: 199 21% 36%;
+    --secondary-foreground: 0 0% 100%; /* #ffffff */
+    --secondary-container: 200 66% 88%; /* #cbe7f5 */
+
+    /* Tertiary / Accent #260e00 -> 22deg, 100%, 7% */
+    --accent: 22 100% 7%;
+    --accent-foreground: 0 0% 100%; /* #ffffff */
+    --muted: 45 28% 90%; /* surface-container */
+    --muted-foreground: 213 8% 28%; /* on-surface-variant */
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 218 5% 50%; /* #73777e outline */
+    --input: 218 5% 50%;
+    --ring: 208 100% 8%; /* primary */
+
+    --radius: 0.5rem;
+
+    /* Semantic Surfaces based on DESIGN.md */
+    --surface: 48 33% 96%; /* #fcf9f0 */
+    --surface-foreground: 60 10% 10%; /* #1c1c17 */
+    --surface-container-low: 45 42% 94%; /* #f6f3ea */
+    --surface-container: 45 28% 90%; /* #f1eee5 */
+    --surface-container-highest: 45 16% 88%; /* #e5e2da */
+    --surface-container-lowest: 0 0% 100%; /* #ffffff */
+  }
+
+  .dark {
+    /* Since the colorMode is LIGHT, we map dark generically for now or omit it. 
+       If dark mode is needed, we invert these. By default, Maritime Scholarly is light-mode focused. */
+    --background: 208 100% 8%;
+    --foreground: 48 33% 96%;
+    --card: 208 100% 8%;
+    --card-foreground: 48 33% 96%;
+    --popover: 208 100% 8%;
+    --popover-foreground: 48 33% 96%;
+    --primary: 48 33% 96%;
+    --primary-foreground: 208 100% 8%;
+    --secondary: 45 28% 90%;
+    --secondary-foreground: 199 21% 36%;
+    --muted: 220 14% 16%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 220 14% 16%;
+    --accent-foreground: 48 33% 96%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 48 33% 96%;
+    --border: 220 13% 28%;
+    --input: 220 13% 28%;
+    --ring: 213 27% 84%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Glass & Gradient Styles from DESIGN.md */
+.glass-panel {
+  @apply bg-surface-containerLowest/80 backdrop-blur-[12px];
+}
+
+.hero-gradient-text {
+  @apply bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent;
+}
+
+.hero-gradient-bg {
+  @apply bg-gradient-to-b from-primary to-primary-container;
+}
+
+.ambient-shadow {
+  box-shadow: 0 20px 40px rgba(0, 22, 41, 0.06);
+}
+
+.ghost-border {
+  border: 1px solid rgba(195, 199, 206, 0.15); /* outline_variant at 15% */
+}
+
+.bottom-border-input {
+  @apply outline-none border-b border-[#73777e]/30 focus:border-primary transition-colors bg-transparent;
+}
