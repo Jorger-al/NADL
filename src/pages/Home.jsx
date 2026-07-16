@@ -96,7 +96,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchSites() {
       try {
-        const response = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/items/sites?limit=-1");
+        const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/sites?limit=-1`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
