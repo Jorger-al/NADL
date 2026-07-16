@@ -28,7 +28,7 @@ export default function Login() {
         try {
             // 1. Fetch user by email from custom users collection
             const userResponse = await fetch(
-                `/directus-api/items/users?filter[email][_eq]=${encodeURIComponent(email)}&fields=*`
+                `${import.meta.env.VITE_DIRECTUS_URL}/items/users?filter[email][_eq]=${encodeURIComponent(email)}&fields=*`
             );
 
             if (!userResponse.ok) {
@@ -43,7 +43,7 @@ export default function Login() {
             const user = userData.data[0];
 
             // 2. Verify password hash using the Directus utility endpoint
-            const verifyResponse = await fetch("/directus-api/utils/hash/verify", {
+            const verifyResponse = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/utils/hash/verify", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
