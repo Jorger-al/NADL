@@ -42,7 +42,7 @@ export default function SubmittedPosts() {
 
                 // Fetch all blog_posts and filter client-side
                 const postsRes = await fetch(
-                    "${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts?limit=-1&sort=date_created"
+                    `${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts?limit=-1&sort=date_created`
                 );
 
                 let allPosts = [];
