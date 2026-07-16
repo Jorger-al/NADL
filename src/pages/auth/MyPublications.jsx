@@ -55,7 +55,7 @@ export default function MyPublications() {
                 }
 
                 // Fetch Reported Finds
-                const findsRes = await 
+                const findsRes = await fetch(
                     `${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds?limit=-1&sort[]=-created_at`
                 );
 
