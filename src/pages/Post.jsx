@@ -141,7 +141,7 @@ export default function Post() {
         const formData = new FormData();
         formData.append("file", editImageFile);
 
-        const uploadRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/files", {
+        const uploadRes = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/files`, {
           method: "POST",
           body: formData,
         });
