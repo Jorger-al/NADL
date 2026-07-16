@@ -20,7 +20,7 @@ export default function VerifyEmail() {
             try {
                 // 1. Find the user with this verification token
                 const userResponse = await fetch(
-                    `/directus-api/items/users?filter[verification_token][_eq]=${encodeURIComponent(token)}&fields=id,status,verification_token&limit=1`
+                    `${import.meta.env.VITE_DIRECTUS_URL}/items/users?filter[verification_token][_eq]=${encodeURIComponent(token)}&fields=id,status,verification_token&limit=1`
                 );
 
                 if (!userResponse.ok) {
@@ -42,7 +42,7 @@ export default function VerifyEmail() {
                 }
 
                 // 2. Update the user's status to "verified" and clear the token
-                const updateResponse = await fetch(`/directus-api/items/users/${user.id}`, {
+                const updateResponse = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/users/${user.id}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
