@@ -21,7 +21,7 @@ import ReturnToHome from './pages/ReturnToHome'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import Profile from './pages/auth/Profile'
-import MyPublications from './pages/auth/Mypublications'
+import MyPublications from './pages/auth/MyPublications'
 import SubmittedFinds from './pages/auth/SubmittedFinds'
 import SubmittedPosts from './pages/auth/SubmittedPosts'
 
