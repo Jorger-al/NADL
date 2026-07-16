@@ -45,7 +45,7 @@ export default function MyPublications() {
 
                 // Fetch Blog Posts
                 const postsRes = await fetch(
-                    "${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts?limit=-1&sort[]=-date_published"
+                    `${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts?limit=-1&sort[]=-date_published`
                 );
 
                 let allPosts = [];
@@ -56,7 +56,7 @@ export default function MyPublications() {
 
                 // Fetch Reported Finds
                 const findsRes = await 
-                    "${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds?limit=-1&sort[]=-created_at"
+                    `${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds?limit=-1&sort[]=-created_at`
                 );
 
                 let allFinds = [];
