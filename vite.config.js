@@ -14,14 +14,5 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ["react-globe.gl", "three"],
-  },
-  server: {
-    proxy: {
-      '/directus-api': {
-        target: 'https://directus-production-7b95.up.railway.app',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/directus-api/, '')
-      }
-    }
   }
 })
