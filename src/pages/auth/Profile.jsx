@@ -77,7 +77,7 @@ export default function Profile() {
                 const formData = new FormData();
                 formData.append("file", editAvatarFile);
 
-                const uploadRes = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/files", {
+                const uploadRes = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/files`, {
                     method: "POST",
                     body: formData,
                 });
