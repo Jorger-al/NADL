@@ -41,7 +41,7 @@ export default function Register() {
             const verificationToken = generateVerificationToken();
 
             // 1. Create user with status "verified" and the verification token
-            const response = await fetch("/directus-api/items/users", {
+            const response = await fetch("${import.meta.env.VITE_DIRECTUS_URL}/items/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
