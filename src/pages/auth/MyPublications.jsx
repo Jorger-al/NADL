@@ -32,7 +32,7 @@ export default function MyPublications() {
 
                 // Fetch Profile from custom users collection
                 const profileRes = await fetch(
-                    `/directus-api/items/users/${token}?fields=id,name,email`
+                    `${import.meta.env.VITE_DIRECTUS_URL}/items/users/${token}?fields=id,name,email`
                 );
 
                 if (!profileRes.ok) {
@@ -45,7 +45,7 @@ export default function MyPublications() {
 
                 // Fetch Blog Posts
                 const postsRes = await fetch(
-                    "/directus-api/items/blog_posts?limit=-1&sort[]=-date_published"
+                    "${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts?limit=-1&sort[]=-date_published"
                 );
 
                 let allPosts = [];
@@ -55,8 +55,8 @@ export default function MyPublications() {
                 }
 
                 // Fetch Reported Finds
-                const findsRes = await fetch(
-                    "/directus-api/items/reported_finds?limit=-1&sort[]=-created_at"
+                const findsRes = await 
+                    "${import.meta.env.VITE_DIRECTUS_URL}/items/reported_finds?limit=-1&sort[]=-created_at"
                 );
 
                 let allFinds = [];
@@ -109,7 +109,7 @@ export default function MyPublications() {
         setConfirmDelete(null);
 
         try {
-            const response = await fetch(`/directus-api/items/blog_posts/${postId}`, {
+            const response = await fetch(`${import.meta.env.VITE_DIRECTUS_URL}/items/blog_posts/${postId}`, {
                 method: "DELETE",
             });
 
